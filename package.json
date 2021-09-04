@@ -1,0 +1,23 @@
+{
+  "name": "eu_kith_scraper",
+  "version": "1.0.0",
+  "description": "A scraper that gets data and stuff from the kits website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scraper"
+  ],
+  "author": "Naveed khan",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "get-urls": "^10.0.0",
+    "node-fetch": "^3.0.0",
+    "pretty": "^2.0.0",
+    "prompt-sync": "^4.2.0",
+    "superagent": "^6.1.0",
+    "superagent-scraper": "^1.0.0"
+  }
+}
