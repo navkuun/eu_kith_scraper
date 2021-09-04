@@ -1,12 +1,13 @@
+// IMPORTS
 const { read } = require('fs');
 const superagent = require('superagent').agent();
 const cheerio = require('cheerio');
 const prompt = require('prompt-sync')();
 const generator = require('./AntiBot-handling/Generator.js'); 
-// Gives functions generateIP, generateUserAgents, generateReferers
+// ^ Gives functions generateIP, generateUserAgents, generateReferers
 const { userInfo } = require('os');
 const pretty = require('pretty');
-const { title } = require('process');
+cont { title } = require('process');
 const { add } = require('cheerio/lib/api/traversing');
 
 
@@ -26,11 +27,7 @@ function userInput(){
 async function mainProcess() {
     mainPrompt();
     let continueProcess = prompt("Do you want to start querying a product [y/n] ? ");
-
-    // do { 
-
     const kithURL = userInput();
-
     await superagent.get(kithURL)
         // .query({ q: 'bag' })
         .set('Content-Type', 'text/html')
@@ -71,12 +68,8 @@ async function mainProcess() {
                     prodIDs[i] = IDobj['value'];
                 }
             })
-        
             varientID = prodIDs[userSwatchOption];
             let quantity = prompt("What quantity of your item would you like ? : ");
-        
-        
-            
         let addToCart = async () => { await superagent.post('https://kith.com/cart/add.js')
             .send({'form-type':'product', 'id': varientID, 'quantity':quantity})
             .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -97,10 +90,7 @@ async function mainProcess() {
             console.log("Error exception has occured");
             console.log(err);
         })
-        // continueProcess = prompt("Continue [y], Exit[n] ?")
-    // }while(continueProcess.toLowerCase() == 'y');
-
-    // console.log("Exiting programme....".blink());
+      
 }
 
 mainProcess()
