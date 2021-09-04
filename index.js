@@ -2,14 +2,15 @@ const { read } = require('fs');
 const superagent = require('superagent').agent();
 const cheerio = require('cheerio');
 const prompt = require('prompt-sync')();
-const generator = require('./AntiBot-handling/Generator.js'); // Generate IP
+const generator = require('./AntiBot-handling/Generator.js'); 
+// Gives functions generateIP, generateUserAgents, generateReferers
 const { userInfo } = require('os');
 const pretty = require('pretty');
 const { title } = require('process');
 const { add } = require('cheerio/lib/api/traversing');
-// ^ Gives functions generateIP, generateUserAgents, generateReferers
 
-function mainPrompt(){
+
+function mainPrompt(){ 
     console.log("-----------------------------------------------------------------------");
     console.log("Hello, this is the KITH bot service: ");
     console.log("-----------------------------------------------------------------------");
@@ -43,7 +44,8 @@ async function mainProcess() {
             let title_product = $('.product__title');
             let price_product = $('.product__price');
             // console.log(title_product.text()); name of product
-            console.log("-----------------------------------------------------------------------")
+            console.log
+        
             console.log(`The product you have chosen is - ${title_product.text()} - that goes for ${price_product.text().replace(/\s+/g,'')}`);
 
             let swatches = [] ;
@@ -51,7 +53,9 @@ async function mainProcess() {
                 swatches[i] = $(this).text().replace(/\s+/g,''); // removes whitespace
             });
             let n_swatch = swatches.length;
+        
             console.log("These are your size options: ");
+        
             for(let i = 1 ;i <= n_swatch; ++i){
                 console.log(`${i} - ${swatches[i-1]}`);
             }
@@ -60,12 +64,14 @@ async function mainProcess() {
             console.log(`The option you chose is "${swatches[userSwatchOption - 1]}"`);
 
             let prodIDs = [];
+        
             $('#product__master-select').children().each(function(i, e){
                 let IDobj = $(this).attr();
                 if(IDobj['disabled'] == undefined){
                     prodIDs[i] = IDobj['value'];
                 }
             })
+        
             varientID = prodIDs[userSwatchOption];
             let quantity = prompt("What quantity of your item would you like ? : ");
         
@@ -83,8 +89,7 @@ async function mainProcess() {
             .catch(err1 => {
                 console.log(err1);
             })};
-        // let bag = superagent.get('https://kith.com/pages/international-checkout#Global-e_International_Checkout');
-        // console.log(bag.text);
+   
         addToCart();
 
         })
